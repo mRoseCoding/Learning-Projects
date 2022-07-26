@@ -1,0 +1,858 @@
+#include<iostream>
+#include<stdlib.h>
+int main(){
+
+//First declare the houses and sorting variables
+bool hufflepuff;
+bool slytherin;
+bool gryffindor;
+bool ravenclaw;
+
+
+//Declare the house points variables with first initial and "hp"
+int shp = 5;
+int ghp = 5;
+int rhp = 5;
+int hhp = 5;
+
+//Declare scenario choices
+char sorting;
+char answer_one;
+char answer_three;
+
+//Declare Scenario 2 choices (team vs team)
+char hvss;
+char hvsg;
+char hvsr;
+char gvss;
+char gvsh;
+char gvsr;
+char rvss;
+char rvsh;
+char rvsg;
+char svsg;
+char svsr;
+char svsh;
+
+//Declare Bonus answers for points
+char bonus_one;
+char bonus_two;
+char bonus_three;
+
+//This is the beginging of the Hogwarts text adventure
+std::cout << "****************************************\n";
+std::cout << "          Welcome to Hogwarts!          \n";
+std::cout << "****************************************\n";
+
+
+//Now we will sort into houses
+bool sort = true;
+while(sort){
+std::cout << "Answer this next question carefully since it will sort you into your house.\n";
+std::cout << "How would you like to be remembered?\n";
+std::cout << "a) As a hero\n";
+std::cout << "b) As a success\n";
+std::cout << "c) As a good friend\n";
+std::cout << "d) As a scholar\n";
+std::cout << "Answer: ";
+std::cin >> sorting;
+  if(sorting == 'a' || sorting == 'A'){
+   gryffindor = true; 
+   std::cout << "Congratulations you are now a member of Gryffindor!\n";
+   sort = false;
+  }
+  else if(sorting == 'b' || sorting == 'B'){
+    slytherin = true;
+    std::cout << "Congratulations you are now a member of Slytherin!\n";
+    sort = false;
+  }
+  else if(sorting == 'c' || sorting == 'C'){
+    hufflepuff = true;
+    std::cout << "Congratulations you are now a member of Hufflepuff!\n";
+    sort = false;
+  }
+  else if(sorting == 'd' || sorting == 'D'){
+    ravenclaw = true;
+    std::cout << "Congratulations you are now a member of Ravenclaw!\n";
+    sort = false;
+  }
+  else{
+    std::cout << "Invalid input.\n";
+    sort = true;
+  }
+}
+
+std::cout << "\n";
+
+//First bonus question
+std::cout << "----------------------------------------------------------\n";
+std::cout << "Pop quiz! If you get this right you get 1 house point!\n";
+std::cout << "BUT if you get it wrong all other houses get 1 house point!\n";
+std::cout << "What is the spell used to unlock doors?\n";
+std::cout << "a) Alohomora b) Vera Verto c) Accio\n";
+std::cin >> bonus_one;
+if(bonus_one == 'a' || bonus_one == 'A'){
+  std::cout << "Correct! \n";
+  if(ravenclaw){
+    rhp++;
+  }else if(slytherin){
+    shp++;
+  }else if(hufflepuff){
+    hhp++;
+  }else if(slytherin){
+    shp++;
+  }else{
+    std::cout << "An error occured.\n";
+  }
+}else{
+std::cout << "I'm sorry the answer was a) Alohomora.\n";
+  if(ravenclaw){
+    shp++;
+    hhp++;
+    ghp++;
+  }else if(slytherin){
+    rhp++;
+    hhp++;
+    ghp++;
+  }else if(hufflepuff){
+    ghp++;
+    shp++;
+    rhp++;
+  }else if(slytherin){
+    shp++;
+    rhp++;
+    hhp++;
+  }else{
+    std::cout << "An error occured.\n";
+  }
+}
+
+std::cout << "----------------------------------------------------------\n";
+
+
+
+//Now we will encouter the first scenario
+bool scene_one = true;
+
+while(scene_one){
+std::cout << "\n";
+std::cout << "Welcome to your first day at Hogwarts!\n";
+std::cout << "You need to find your way to your first charms class, \n";
+std::cout << "but you don't know where it is!\n";
+std::cout << "Do you: \n";
+std::cout << "a) Ask the nearest ghost for directions.\n";
+std::cout << "b) Ask the nearest prefect for directions.\n";
+std::cout << "Answer: ";
+std::cin >> answer_one;
+std::cout << "* * * * * * * * * * * * * * \n";
+if(answer_one == 'a' || answer_one == 'A'){
+  std::cout << "Unfortunately the ghost you asked was Peeves!\n";
+  std::cout << "His tricks made you late for class, \n";
+  std::cout << "but since it is the first day you are forgiven.\n";
+  std::cout << "\n";
+  scene_one = false;
+  }
+else if( answer_one == 'b' || answer_one == 'B'){
+  std::cout << "The prefect was very helpful!\n";
+  std::cout << "They told you a short cut and you are the first to class!\n";
+  if(slytherin == true){
+    std::cout << "2pts for Slytherin!\n";
+    shp += 2;
+    scene_one = false;
+  }
+  else if(hufflepuff == true){
+    std::cout << "2pts for Hufflepuff!\n";
+    hhp += 2;
+    scene_one = false;
+  }
+  else if(gryffindor == true){
+    std::cout << "2pts for Gryffindor!\n";
+    ghp += 2;
+    scene_one = false;
+  }
+  else if(ravenclaw == true){
+    std::cout << "2pts for Ravenclaw!\n";
+    rhp +=2;
+    scene_one = false;
+  }
+  else{
+    std::cout << "An error occured.\n";
+  }
+  std::cout << "\n";
+}
+else{
+  std::cout << "Invalid input\n";
+  scene_one = true;
+  }
+}
+//Display the current house points
+std::cout << "*****************************\n";
+std::cout << "The House Points stand as is:\n";
+std::cout << "Gryffindor: " << ghp << "\n";
+std::cout << "Slytherin: " << shp << "\n";
+std::cout << "Ravenclaw: " << rhp << "\n";
+std::cout << "Hufflepuff: " << hhp << "\n";
+std::cout << "*****************************\n";
+std::cout << "\n";
+
+//Bonus question 2
+std::cout << "----------------------------------------------------------\n";
+std::cout << "Pop quiz! If you get this right you get 1 house point!\n";
+std::cout << "BUT if you get it wrong all other houses get 1 house point!\n";
+std::cout << "What is the spell used for lighting your way?\n";
+std::cout << "a) Knox b) Lumos c) Confundo\n";
+std::cin >> bonus_two;
+if(bonus_two == 'b' || bonus_two == 'B'){
+  std::cout << "Correct! \n";
+  if(ravenclaw){
+    rhp++;
+  }else if(slytherin){
+    shp++;
+  }else if(hufflepuff){
+    hhp++;
+  }else if(slytherin){
+    shp++;
+  }else{
+    std::cout << "An error occured.\n";
+  }
+}else{
+std::cout << "I'm sorry the answer was b) Lumos.\n";
+  if(ravenclaw){
+    shp++;
+    hhp++;
+    ghp++;
+  }else if(slytherin){
+    rhp++;
+    hhp++;
+    ghp++;
+  }else if(hufflepuff){
+    ghp++;
+    shp++;
+    rhp++;
+  }else if(slytherin){
+    shp++;
+    rhp++;
+    hhp++;
+  }else{
+    std::cout << "An error occured.\n";
+  }
+}
+
+std::cout << "----------------------------------------------------------\n";
+
+
+
+
+
+//Now we will enter scenario 2
+
+bool scene_two = true;
+
+while(scene_two){
+  std::cout << "And now for Hogwarts favorite pastime!\n";
+  std::cout << "Quidditch!\n";
+  std::cout << "********************************\n";
+  srand(time(NULL));
+  int opponent = rand()%3+1;
+
+  //if Hufflepuff
+    if(hufflepuff == true && opponent == 1){
+      std::cout << "Your opponent will be Slytherin! \n";
+      bool hvs = true;
+      while(hvs){
+        std::cout << "You notice Peeves messing with Slytherin teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Slytherin team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> hvss;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(hvss == 'a' || hvss == 'A'){
+          std::cout << "Someone from Gryffindor also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Gryffindor.\n";
+          ghp += 5;
+          hvs = false;
+        }
+        else if(hvss == 'b' || hvss == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Hufflepuff for your honesty.\n";
+          hhp += 5;
+          hvs = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          hvs = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+    else if(hufflepuff == true && opponent == 2){
+      std::cout << "Your opponent will be Gryffindor!\n";
+      bool hvg = true;
+      while(hvg){
+        std::cout << "You notice Peeves messing with Gryffindor teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Gryffindor team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> hvsg;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(hvsg == 'a' || hvsg == 'A'){
+          std::cout << "Someone from Ravenclaw also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Ravenclaw.\n";
+          rhp += 5;
+          hvg = false;
+        }
+        else if(hvsg == 'b' || hvsg == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Hufflepuff for your honesty.\n";
+          hhp += 5;
+          hvg = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          hvg = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+    else if(hufflepuff == true && opponent == 3){
+      std::cout << "Your opponent will be Ravenclaw!\n";
+      bool hvr = true;
+      while(hvr){
+        std::cout << "You notice Peeves messing with Ravenclaw teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Ravenclaw team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> hvsr;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(hvsr == 'a' || hvsr == 'A'){
+          std::cout << "Someone from Slytherin also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Slytherin.\n";
+          shp += 5;
+          hvr = false;
+        }
+        else if(hvsr == 'b' || hvsr == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Hufflepuff for your honesty.\n";
+          hhp += 5;
+          hvr = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          hvr = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+
+
+//if Gryffindor
+else if(gryffindor == true && opponent == 1){
+      std::cout << "Your opponent will be Hufflepuff!\n";
+      bool gvh = true;
+      while(gvh){
+        std::cout << "You notice Peeves messing with Hufflepuff teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Hufflepuff team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> gvsh;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(gvsh == 'a' || gvsh == 'A'){
+          std::cout << "Someone from Ravenclaw also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Ravenclaw.\n";
+          rhp += 5;
+          gvh = false;
+        }
+        else if(gvsh == 'b' || gvsh == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Gryffindor for your honesty.\n";
+          ghp += 5;
+          gvh = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          gvh = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+else if(gryffindor == true && opponent == 2){
+      std::cout << "Your opponent will be Slytherin!\n";
+      bool gvs = true;
+      while(gvs){
+        std::cout << "You notice Peeves messing with Slytherin teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Slytherin team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> gvss;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(gvss == 'a' || gvss == 'A'){
+          std::cout << "Someone from Hufflepuff also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Hufflepuff.\n";
+          hhp += 5;
+          gvs = false;
+        }
+        else if(gvss == 'b' || gvss == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Gryffindor for your honesty.\n";
+          ghp += 5;
+          gvs = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          gvs = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+else if(gryffindor == true && opponent == 3){
+      std::cout << "Your opponent will be Ravenclaw!\n";
+      bool gvr = true;
+      while(gvr){
+        std::cout << "You notice Peeves messing with Ravenclaw teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Ravenclaw team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> gvsr;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(gvsr == 'a' || gvsr == 'A'){
+          std::cout << "Someone from Slytherin also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Slytherin.\n";
+          shp += 5;
+          gvr = false;
+        }
+        else if(gvsr == 'b' || gvsr == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Gryffindor for your honesty.\n";
+          ghp += 5;
+          gvr = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          gvr = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+
+//if Ravenclaw
+else if(ravenclaw == true && opponent == 1){
+      std::cout << "Your opponent will be Hufflepuff!\n";
+      bool rvh = true;
+      while(rvh){
+        std::cout << "You notice Peeves messing with Hufflepuff teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Hufflepuff team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> rvsh;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(rvsh == 'a' || rvsh == 'A'){
+          std::cout << "Someone from Gryffindor also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Gryffindor.\n";
+          ghp += 5;
+          rvh = false;
+        }
+        else if(rvsh == 'b' || rvsh == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Ravenclaw for your honesty.\n";
+          rhp += 5;
+          rvh = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          rvh = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+else if(ravenclaw == true && opponent == 2){
+      std::cout << "Your opponent will be Slytherin!\n";
+      bool rvs = true;
+      while(rvs){
+        std::cout << "You notice Peeves messing with Slytherin teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Slytherin team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> rvss;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(rvss == 'a' || rvss == 'A'){
+          std::cout << "Someone from Hufflepuff also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Hufflepuff.\n";
+          hhp += 5;
+          rvs = false;
+        }
+        else if(rvss == 'b' || rvss == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Ravenclaw for your honesty.\n";
+          rhp += 5;
+          rvs = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          rvs = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+else if(ravenclaw == true && opponent == 3){
+      std::cout << "Your opponent will be Gryffindor!\n";
+      bool rvg = true;
+      while(rvg){
+        std::cout << "You notice Peeves messing with Gryffindor teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Gryffindor team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> rvsg;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(rvsg == 'a' || rvsg == 'A'){
+          std::cout << "Someone from Slytherin also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Slytherin.\n";
+          shp += 5;
+          rvg = false;
+        }
+        else if(rvsg == 'b' || rvsg == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Ravenclaw for your honesty.\n";
+          rhp += 5;
+          rvg = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          rvg = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+
+//if Slytherin
+else if(slytherin == true && opponent == 1){
+      std::cout << "Your opponent will be Hufflepuff!\n";
+      bool svh = true;
+      while(svh){
+        std::cout << "You notice Peeves messing with Hufflepuff teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Hufflepuff team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> svsh;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(svsh == 'a' || svsh == 'A'){
+          std::cout << "Someone from Ravenclaw also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Ravenclaw.\n";
+          rhp += 5;
+          svh = false;
+        }
+        else if(svsh == 'b' || svsh == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Slytherin for your honesty.\n";
+          shp += 5;
+          svh = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          svh = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+else if(slytherin == true && opponent == 2){
+      std::cout << "Your opponent will be Gryffindor!\n";
+      bool svg = true;
+      while(svg){
+        std::cout << "You notice Peeves messing with Gryffindor teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Gryffindor team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> svsg;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(svsg == 'a' || svsg == 'A'){
+          std::cout << "Someone from Ravenclaw also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Ravenclaw.\n";
+          rhp += 5;
+          svg = false;
+        }
+        else if(svsg == 'b' || svsg == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Slytherin for your honesty.\n";
+          shp += 5;
+          svg = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          svg = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+else if(slytherin == true && opponent == 3){
+      std::cout << "Your opponent will be Ravenclaw!\n";
+      bool svr = true;
+      while(svr){
+        std::cout << "You notice Peeves messing with Ravenclaw teams' brooms.\n";
+        std::cout << "Do you: \n";
+        std::cout << "a) Leave it alone.\n";
+        std::cout << "b) Tell the Ravenclaw team captain.\n";
+        std::cout << "Answer: ";
+        std::cin >> svsr;
+        std::cout << "* * * * * * * * * * * * * * \n";
+        if(svsr == 'a' || svsr == 'A'){
+          std::cout << "Someone from Hufflepuff also saw Peeves and reported it\n";
+          std::cout << "5pts were awarded to Hufflepuff.\n";
+          hhp += 5;
+          svr = false;
+        }
+        else if(svsr == 'b' || svsr == 'B'){
+          std::cout << "The team captain thanks you and tells Madame Hooch.\n";
+          std::cout << "5pts are awarded to Slytherin for your honesty.\n";
+          shp += 5;
+          svr = false;
+        }
+        else{
+          std::cout << "Invalid response.\n";
+          svr = true;
+        }
+      }
+      std::cout << "\n";
+      scene_two = false;
+    }
+
+
+    else{
+      std::cout << "An error occured.\n";
+      scene_two = true;
+    }
+
+}
+
+std::cout << "*****************************\n";
+std::cout << "The House Points stand as is:\n";
+std::cout << "Gryffindor: " << ghp << "\n";
+std::cout << "Slytherin: " << shp << "\n";
+std::cout << "Ravenclaw: " << rhp << "\n";
+std::cout << "Hufflepuff: " << hhp << "\n";
+std::cout << "*****************************\n";
+
+//Bonus question 3
+
+std::cout << "----------------------------------------------------------\n";
+std::cout << "Pop quiz! If you get this right you get 1 house point!\n";
+std::cout << "BUT if you get it wrong all other houses get 1 house point!\n";
+std::cout << "What of the following is NOT an unforgivable curse?\n";
+std::cout << "(but probably should be)\n";
+std::cout << "a) Sectumsempra b) Crucio c) Avada Kedavra\n";
+std::cin >> bonus_three;
+if(bonus_three == 'a' || bonus_three == 'A'){
+  std::cout << "Correct! \n";
+  if(ravenclaw){
+    rhp++;
+  }else if(slytherin){
+    shp++;
+  }else if(hufflepuff){
+    hhp++;
+  }else if(slytherin){
+    shp++;
+  }else{
+    std::cout << "An error occured.\n";
+  }
+}else{
+std::cout << "I'm sorry the answer was a) Sectumsempra\n";
+  if(ravenclaw){
+    shp++;
+    hhp++;
+    ghp++;
+  }else if(slytherin){
+    rhp++;
+    hhp++;
+    ghp++;
+  }else if(hufflepuff){
+    ghp++;
+    shp++;
+    rhp++;
+  }else if(slytherin){
+    shp++;
+    rhp++;
+    hhp++;
+  }else{
+    std::cout << "An error occured.\n";
+  }
+}
+
+std::cout << "----------------------------------------------------------\n";
+
+
+
+
+
+//Begin scenario 3
+
+bool scene_three = true;
+
+while(scene_three){
+  std::cout << "We are now well into the school year.\n";
+  std::cout << "Your finals are just around the corner!\n";
+  std::cout << "You are getting ready to spend the weekend studying,\n";
+  std::cout << "when an older student says they can help you sneak to Hogsmeade!\n";
+  std::cout << "Do you: \n";
+  std::cout << "a) Stay back and study.\n";
+  std::cout << "b) Sneak into Hogsmeade.\n";
+  std::cout << "c) Report the student to your Head of house because \n";
+  std::cout << "   they should not be sneaking first year students \n";
+  std::cout << "   out of the castle.\n";
+std::cout << "Answer: ";
+std::cin >> answer_three;
+std::cout << "* * * * * * * * * * * * * * \n";
+// If they answer A points get deducted from other houses
+    if(answer_three == 'a' || answer_three == 'A'){
+      std::cout << "This is a very responsible choice.\n";
+      std::cout << "A group of kids from the other houses got caught.\n";
+      if(gryffindor){
+          std::cout << "Slytherin, Ravenclaw, and Hufflepuff all lost 4 points.\n";
+          rhp -= 4;
+          shp -= 4;
+          hhp -= 4;
+      }else if(slytherin){
+          std::cout << "Gryffindor, Ravenclaw, and Hufflepuff all lost 4 points.\n";
+          rhp -= 4;
+          ghp -= 4;
+          hhp -= 4;
+      }else if(ravenclaw){
+          std::cout << "Gryffindor, Slytherin, and Hufflepuff all lost 4 points.\n";
+          ghp -= 4;
+          shp -= 4;
+          hhp -= 4;
+      }else if(hufflepuff){
+          std::cout << "Gryffindor, Ravenclaw, and Slytherin all lost 4 points.\n";
+          rhp -= 4;
+          shp -= 4;
+          ghp -= 4;
+      }else{
+          std::cout << "An error occured.\n";
+      }
+
+      scene_three = false;
+    }
+
+//If they answer B points get deducted from their house
+    else if (answer_three == 'b' || answer_three == 'B'){
+      std::cout << "You got caught trying to sneak out.\n";
+      if(gryffindor){
+        std::cout << "4pts were deducted from Gryffindor.\n";
+        ghp -= 4;
+      }else if(slytherin){
+        std::cout << "4pts were deducted from Slytherin.\n";
+        shp -=4;
+      }else if(ravenclaw){
+        std::cout << "4pts were deducted from Ravenclaw.\n";
+        rhp -=4;
+      }else if(hufflepuff){
+        std::cout << "4pts were deducted from Hufflepuff.\n";
+        hhp -=4;
+      }else{
+        std::cout << "An error occured.\n";
+      }
+      scene_three = false;
+    }
+//If they answer C Points get awarded to their house
+    else if (answer_three == 'c' || answer_three == 'C'){
+      std::cout << "While this choice did not make you popular with your\n";
+      std::cout << "older classmates... The head of your house appreciates \n";
+      std::cout << "your concern for students safety. \n";
+      if(gryffindor){
+        std::cout << "5pts are awarded to Gryffindor! \n";
+        ghp += 5;
+      }else if(ravenclaw){
+        std::cout << "5pts are awarded to Ravenclaw! \n";
+        rhp += 5;
+      }else if(slytherin){
+        std::cout << "5pts are awarded to Slytherin! \n";
+        shp +=5;
+      }else if(hufflepuff){
+        std::cout << "5pts are awarded to Hufflepuff! \n";
+        hhp +=5;
+      }else{
+        std::cout << "An error occured. \n";
+      }
+
+      scene_three = false;
+    }
+//If they enter an invalid input
+    else{
+      std::cout << "Invalid entry\n";
+      scene_three = true;
+    }
+
+
+
+
+
+}
+
+
+//Time to announce the winner
+std::cout << "``````````````````````````````````````````````````````````````\n";
+std::cout << "The time has come to annouce the winner of the house cup!\n";
+std::cout << "\n";
+//Display the current house points
+std::cout << "The House Points stand as is:\n";
+std::cout << "Gryffindor: " << ghp << "\n";
+std::cout << "Slytherin: " << shp << "\n";
+std::cout << "Ravenclaw: " << rhp << "\n";
+std::cout << "Hufflepuff: " << hhp << "\n";
+std::cout << "\n";
+std::cout << "Making the winner for this year\n";
+std::cout << "``````````````````````````````````````````````````````````````\n";
+int max = 0;
+  std::string house;
+
+  if(ghp > max){
+    max = ghp;
+    house = "Gryffindor!!";
+  } 
+  if(hhp > max){
+    max = hhp;
+    house = "Hufflepuff!!";
+  }
+  if(rhp > max){
+    max = rhp;
+    house = "Ravenclaw!!";
+  }
+  if(shp > max){
+    max = shp;
+    house = "Slytherin!!";
+  }
+  std::cout << house << "!\n";
+
+  //The end :)
+  
+return 0;
+
+
+
+
+
+
+
+
+
+
+}
